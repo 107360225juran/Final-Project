@@ -84,8 +84,6 @@ void start(const card* const wDeck, int *z)
 	show(2, 6, wDeck);
 	printf("\n\n您手上的牌:");
 	show(0, 1, wDeck); 
-	printf("\n\n對手手上的牌:");
-	show(7, 8, wDeck);
 	printf("\n\n\n\n");
 	//==================================================================第四回合結束
 }
