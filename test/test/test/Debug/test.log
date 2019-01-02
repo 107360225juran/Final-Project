@@ -1,0 +1,17 @@
+﻿  main.c
+d:\test\test\test\main.c(26): warning C4244: '函式': 將 'time_t' 轉換為 'unsigned int'，由於類型不同，可能導致資料遺失
+d:\test\test\test\main.c(48): warning C4090: '函式': 不同的 'const' 限定詞
+d:\test\test\test\main.c(57): warning C4090: '函式': 不同的 'const' 限定詞
+d:\test\test\test\main.c(59): warning C4090: '函式': 不同的 'const' 限定詞
+d:\test\test\test\main.c(68): warning C4090: '函式': 不同的 'const' 限定詞
+d:\test\test\test\main.c(70): warning C4090: '函式': 不同的 'const' 限定詞
+d:\test\test\test\main.c(84): warning C4090: '函式': 不同的 'const' 限定詞
+d:\test\test\test\main.c(86): warning C4090: '函式': 不同的 'const' 限定詞
+d:\test\test\test\main.c(46): warning C4101: 'i': 未參考的區域變數
+d:\test\test\test\main.c(103): warning C4244: '函式': 將 'time_t' 轉換為 'unsigned int'，由於類型不同，可能導致資料遺失
+d:\test\test\test\main.c(208): warning C4028: 型式參數 1 與來自宣告的不同
+d:\test\test\test\main.c(208): warning C4028: 型式參數 2 與來自宣告的不同
+d:\test\test\test\main.c(234): warning C4090: '=': 不同的 'const' 限定詞
+d:\test\test\test\main.c(235): warning C4090: '=': 不同的 'const' 限定詞
+d:\test\test\test\main.c(201): warning C4715: 'init_Bet': 不是所有控制路徑都傳回值
+  test.vcxproj -> D:\test\test\Debug\test.exe
