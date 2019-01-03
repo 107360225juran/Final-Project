@@ -1,18 +1,18 @@
 ﻿  main.c
 d:\test\test\test\main.c(27): warning C4244: '函式': 將 'time_t' 轉換為 'unsigned int'，由於類型不同，可能導致資料遺失
 d:\test\test\test\main.c(28): warning C4090: '函式': 不同的 'const' 限定詞
-d:\test\test\test\main.c(48): warning C4090: '函式': 不同的 'const' 限定詞
-d:\test\test\test\main.c(59): warning C4090: '函式': 不同的 'const' 限定詞
-d:\test\test\test\main.c(61): warning C4090: '函式': 不同的 'const' 限定詞
-d:\test\test\test\main.c(73): warning C4090: '函式': 不同的 'const' 限定詞
-d:\test\test\test\main.c(75): warning C4090: '函式': 不同的 'const' 限定詞
-d:\test\test\test\main.c(89): warning C4090: '函式': 不同的 'const' 限定詞
-d:\test\test\test\main.c(91): warning C4090: '函式': 不同的 'const' 限定詞
-d:\test\test\test\main.c(93): warning C4090: '函式': 不同的 'const' 限定詞
-d:\test\test\test\main.c(95): warning C4090: '函式': 不同的 'const' 限定詞
-d:\test\test\test\main.c(46): warning C4101: 'i': 未參考的區域變數
-d:\test\test\test\main.c(127): warning C4477: 'printf' : 格式字串 '%-5d' 需要 'int' 類型的引數，但 variadic 引數 2 的類型為 'char *'
-d:\test\test\test\main.c(142): warning C4244: '函式': 將 'time_t' 轉換為 'unsigned int'，由於類型不同，可能導致資料遺失
+d:\test\test\test\main.c(47): warning C4090: '函式': 不同的 'const' 限定詞
+d:\test\test\test\main.c(58): warning C4090: '函式': 不同的 'const' 限定詞
+d:\test\test\test\main.c(60): warning C4090: '函式': 不同的 'const' 限定詞
+d:\test\test\test\main.c(72): warning C4090: '函式': 不同的 'const' 限定詞
+d:\test\test\test\main.c(74): warning C4090: '函式': 不同的 'const' 限定詞
+d:\test\test\test\main.c(88): warning C4090: '函式': 不同的 'const' 限定詞
+d:\test\test\test\main.c(90): warning C4090: '函式': 不同的 'const' 限定詞
+d:\test\test\test\main.c(92): warning C4090: '函式': 不同的 'const' 限定詞
+d:\test\test\test\main.c(94): warning C4090: '函式': 不同的 'const' 限定詞
+d:\test\test\test\main.c(45): warning C4101: 'i': 未參考的區域變數
+d:\test\test\test\main.c(136): warning C4477: 'printf' : 格式字串 '%-5d' 需要 'int' 類型的引數，但 variadic 引數 2 的類型為 'char *'
+d:\test\test\test\main.c(145): warning C4244: '函式': 將 'time_t' 轉換為 'unsigned int'，由於類型不同，可能導致資料遺失
 d:\test\test\test\main.c(255): warning C4047: '==': 'char *' 與 'int' 間接取值的層級不同
 d:\test\test\test\main.c(259): warning C4047: '==': 'char *' 與 'int' 間接取值的層級不同
 d:\test\test\test\main.c(263): warning C4047: '==': 'char *' 與 'int' 間接取值的層級不同
@@ -26,21 +26,21 @@ d:\test\test\test\main.c(291): warning C4047: '==': 'char *' 與 'int' 間接取
 d:\test\test\test\main.c(295): warning C4047: '==': 'char *' 與 'int' 間接取值的層級不同
 d:\test\test\test\main.c(299): warning C4047: '==': 'char *' 與 'int' 間接取值的層級不同
 d:\test\test\test\main.c(303): warning C4047: '==': 'char *' 與 'int' 間接取值的層級不同
-d:\test\test\test\main.c(414): warning C4047: '==': 'char *' 與 'int' 間接取值的層級不同
-d:\test\test\test\main.c(418): warning C4047: '==': 'char *' 與 'int' 間接取值的層級不同
-d:\test\test\test\main.c(422): warning C4047: '==': 'char *' 與 'int' 間接取值的層級不同
-d:\test\test\test\main.c(426): warning C4047: '==': 'char *' 與 'int' 間接取值的層級不同
-d:\test\test\test\main.c(430): warning C4047: '==': 'char *' 與 'int' 間接取值的層級不同
-d:\test\test\test\main.c(434): warning C4047: '==': 'char *' 與 'int' 間接取值的層級不同
-d:\test\test\test\main.c(438): warning C4047: '==': 'char *' 與 'int' 間接取值的層級不同
-d:\test\test\test\main.c(442): warning C4047: '==': 'char *' 與 'int' 間接取值的層級不同
 d:\test\test\test\main.c(446): warning C4047: '==': 'char *' 與 'int' 間接取值的層級不同
 d:\test\test\test\main.c(450): warning C4047: '==': 'char *' 與 'int' 間接取值的層級不同
 d:\test\test\test\main.c(454): warning C4047: '==': 'char *' 與 'int' 間接取值的層級不同
 d:\test\test\test\main.c(458): warning C4047: '==': 'char *' 與 'int' 間接取值的層級不同
 d:\test\test\test\main.c(462): warning C4047: '==': 'char *' 與 'int' 間接取值的層級不同
-d:\test\test\test\main.c(820): warning C4553: '==': 未使用運算式結果; 您是否想要 '='?
-d:\test\test\test\main.c(821): warning C4553: '==': 未使用運算式結果; 您是否想要 '='?
+d:\test\test\test\main.c(466): warning C4047: '==': 'char *' 與 'int' 間接取值的層級不同
+d:\test\test\test\main.c(470): warning C4047: '==': 'char *' 與 'int' 間接取值的層級不同
+d:\test\test\test\main.c(474): warning C4047: '==': 'char *' 與 'int' 間接取值的層級不同
+d:\test\test\test\main.c(478): warning C4047: '==': 'char *' 與 'int' 間接取值的層級不同
+d:\test\test\test\main.c(482): warning C4047: '==': 'char *' 與 'int' 間接取值的層級不同
+d:\test\test\test\main.c(486): warning C4047: '==': 'char *' 與 'int' 間接取值的層級不同
+d:\test\test\test\main.c(490): warning C4047: '==': 'char *' 與 'int' 間接取值的層級不同
+d:\test\test\test\main.c(494): warning C4047: '==': 'char *' 與 'int' 間接取值的層級不同
+d:\test\test\test\main.c(890): warning C4553: '==': 未使用運算式結果; 您是否想要 '='?
+d:\test\test\test\main.c(891): warning C4553: '==': 未使用運算式結果; 您是否想要 '='?
 d:\test\test\test\main.c(251): warning C4101: 'juice': 未參考的區域變數
 d:\test\test\test\main.c(249): warning C4101: 'twopairpl': 未參考的區域變數
 d:\test\test\test\main.c(251): warning C4101: 'huge': 未參考的區域變數
@@ -48,7 +48,7 @@ d:\test\test\test\main.c(251): warning C4101: 'hole': 未參考的區域變數
 d:\test\test\test\main.c(250): warning C4101: 'twopairco': 未參考的區域變數
 d:\test\test\test\main.c(251): warning C4101: 'dick': 未參考的區域變數
 d:\test\test\test\main.c(251): warning C4101: 'ass': 未參考的區域變數
-d:\test\test\test\main.c(1210): warning C4090: '=': 不同的 'const' 限定詞
-d:\test\test\test\main.c(1211): warning C4090: '=': 不同的 'const' 限定詞
-d:\test\test\test\main.c(241): warning C4715: 'init_Bet': 不是所有控制路徑都傳回值
+d:\test\test\test\main.c(1273): warning C4090: '=': 不同的 'const' 限定詞
+d:\test\test\test\main.c(1274): warning C4090: '=': 不同的 'const' 限定詞
+d:\test\test\test\main.c(246): warning C4715: 'init_Bet': 不是所有控制路徑都傳回值
   test.vcxproj -> D:\test\test\Debug\test.exe
