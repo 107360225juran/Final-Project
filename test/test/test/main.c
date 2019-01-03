@@ -42,91 +42,93 @@ int main()
 
 void start(const card* const wDeck, int *z)
 {
-		int i;
-		printf("\n您手上的牌:");
-		show(0, 1, wDeck);
-		int con = init_Bet();
-		if (con == -1)
-		{
-			return;
-		}
-		printf("\n\n\n\n");
-		//==================================================================第一回合結束
-		if (con != 4)
-		{
-			printf("\n\n您手上的牌:");
-			show(0, 1, wDeck);
-			printf("\n場上的牌:");
-			show(2, 4, wDeck);
-			printf("\n\n\n\n");
-			con = init_Bet();
-			if (con == -1)
-			{
-				return;
-			}
-		}
-		//==================================================================第二回合結束
-		if (con != 4)
-		{
-			printf("\n\n您手上的牌:");
-			show(0, 1, wDeck);
-			printf("\n場上的牌:");
-			show(2, 5, wDeck);
-			printf("\n\n\n\n");
-			con = init_Bet();
-			if (con == -1)
-			{
-				return;
-			}
-		}
-		//==================================================================第三回合結束
-		printf("\n\n\n\n");
-		if (con == -1)
-		{
-			return;
-		}
-		con = compare(wDeck);
-		printf("\n場上的牌:");
-		show(2, 6, wDeck);
+	int i;
+	printf("\n您手上的牌:");
+	show(0, 1, wDeck);
+	int con = init_Bet();
+	if (con == -1)
+	{
+		return;
+	}
+	printf("\n\n\n\n");
+	//==================================================================第一回合結束
+	if (con != 4)
+	{
 		printf("\n\n您手上的牌:");
 		show(0, 1, wDeck);
-		printf("\n\n對手手上的牌:");
-		show(7, 8, wDeck);
-		if (con == 1)
-		{
-			printf("玩家獲勝\n");
-			gold = gold + tablemoney;
-			if (opmoney == 0)
-			{
-				system("pause");
-				exit(0);
-			}
-			tablemoney = 0;
-			return;
-		}
-		if (con == 0)
-		{
-			printf("電腦獲勝\n");
-			opmoney = opmoney + tablemoney;
-			if (gold== 0)
-			{
-				system("pause");
-				exit(0);
-			}
-			tablemoney = 0;
-			return;
-		}
-		if (con == 2)
-		{
-			gold = gold + (tablemoney / 2);
-			opmoney = opmoney + (tablemoney / 2);
-			tablemoney = 0;
-			printf("平手\n");
-			return;
-		}
+		printf("\n場上的牌:");
+		show(2, 4, wDeck);
 		printf("\n\n\n\n");
+		con = init_Bet();
+		if (con == -1)
+		{
+			return;
+		}
+	}
+	//==================================================================第二回合結束
+	if (con != 4)
+	{
+		printf("\n\n您手上的牌:");
+		show(0, 1, wDeck);
+		printf("\n場上的牌:");
+		show(2, 5, wDeck);
+		printf("\n\n\n\n");
+		con = init_Bet();
+		if (con == -1)
+		{
+			return;
+		}
+	}
+	//==================================================================第三回合結束
+	printf("\n\n\n\n");
+	if (con == -1)
+	{
+		return;
+	}
+	con = compare(wDeck);
+	printf("\n場上的牌:");
+	show(2, 6, wDeck);
+	printf("\n\n您手上的牌:");
+	show(0, 1, wDeck);
+	printf("\n\n對手手上的牌:");
+	show(7, 8, wDeck);
+	if (con == 1)
+	{
+		printf("玩家獲勝\n");
+		gold = gold + tablemoney;
+		if (opmoney <= 0)
+		{
+			printf("電腦破產\n");
+			system("pause");
+			exit(0);
+		}
+		tablemoney = 0;
+		return;
+	}
+	if (con == 0)
+	{
+		printf("電腦獲勝\n");
+		opmoney = opmoney + tablemoney;
+		if (gold <= 0)
+		{
+			printf("您輸到脫褲了\n");
+			system("pause");
+			exit(0);
+		}
+		tablemoney = 0;
+		return;
+	}
+	if (con == 2)
+	{
+		gold = gold + (tablemoney / 2);
+		opmoney = opmoney + (tablemoney / 2);
+		tablemoney = 0;
+		printf("平手\n");
+		return;
+	}
+	printf("\n\n\n\n");
 
-	
+
 	//==================================================================第四回合結束
 }
 void show(int i, int f, card* const wDeck)
@@ -362,6 +364,10 @@ int compare(card  *wDeck)
 		}
 	}
 	printf("玩家 ");
+	if (formpl == 0)
+	{
+		printf("高牌\n");
+	}
 	if (formpl == 1)
 	{
 		printf("一對\n");
@@ -529,7 +535,7 @@ int compare(card  *wDeck)
 			formco = 3;//三條
 			porncoFH++;
 		}
-		if (numco[i] >= 1 && numco[i + 1] >= 1 && numco[i + 2] >= 1 && numco[i + 3] >= 1 && numco[i + 4] >= 1 || numco[10] >= 1 && numco[11] >= 1 && numco[12] >= 1 && numco[13] >= 1 && numco[1] >= 1)
+		if ((numco[i] >= 1 && numco[i + 1] >= 1 && numco[i + 2] >= 1 && numco[i + 3] >= 1 && numco[i + 4] >= 1) || (numco[10] >= 1 && numco[11] >= 1 && numco[12] >= 1 && numco[13] >= 1 && numco[1] >= 1))
 		{
 			formpl = 4;//順子
 		}
@@ -553,6 +559,10 @@ int compare(card  *wDeck)
 		}
 	}
 	printf("電腦 ");
+	if (formco == 0)
+	{
+		printf("高牌\n");
+	}
 	if (formco == 1)
 	{
 		printf("一對\n");
