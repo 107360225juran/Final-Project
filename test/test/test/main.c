@@ -146,7 +146,7 @@ int init_Bet()
 	int amount = 0, Basic, react;
 	srand(time(NULL));
 	Basic = 1 + rand() % 50;
-	react = rand() % 10;
+	react = rand() % 10000;
 	//printf("對面玩家下賭注%d", Basic);
 	printf("\n是否棄牌?(y/n)\n");
 	scanf_s("%s", select, sizeof(char) * 4);
@@ -156,9 +156,9 @@ int init_Bet()
 		printf("現在我有:%d元\n", gold);
 		printf("請下賭注\n");
 		scanf_s("%d", &Basic);
-		while (Basic > gold)
+		while (Basic > gold || Basic > opmoney)
 		{
-			printf("你沒有錢窮鬼\n請重新下注:");
+			printf("下注金額不合法\n請重新下注:");
 			scanf_s("%d", &Basic);
 		}
 		if (react == 0)
@@ -193,9 +193,9 @@ int init_Bet()
 			{
 				printf("加注多少\n?");
 				scanf_s("%d", &amount);
-				while (amount > gold)
+				while (amount > gold || amount > opmoney)
 				{
-					printf("你沒有錢窮鬼\n請重新下注:");
+					printf("下注金額不合法\n請重新下注:");
 					scanf_s("%d", &amount);
 				}
 				{
