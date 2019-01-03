@@ -28,14 +28,13 @@ int main()
 	fillDeck(deck, face, suit);
 	printf("是否要開始新賽局(y/n)\n");
 	scanf_s("%s", choose, sizeof(choose));
-	while(!strcmp(choose ,"y"))
+	while (!strcmp(choose, "y"))
 	{
 		shuffle(deck);
 		start(deck, &z);
 		printf("是否要開始新賽局(y/n)\n");
 		scanf_s("%s", choose, sizeof(choose));
 	}
-
 	system("pause");
 	return 0;
 }
@@ -86,36 +85,35 @@ void start(const card* const wDeck, int *z)
 	{
 		return;
 	}
-	con=compare(wDeck);
+	con = compare(wDeck);
 	printf("\n場上的牌:");
 	show(2, 6, wDeck);
 	printf("\n\n您手上的牌:");
-	show(0, 1, wDeck); 
+	show(0, 1, wDeck);
 	printf("\n\n對手手上的牌:");
 	show(7, 8, wDeck);
 	if (con == 1)
 	{
-		printf("玩家獲勝/n");
+		printf("玩家獲勝\n");
+		gold = gold + tablemoney;
 		return;
 	}
 	if (con == 0)
 	{
-		printf("電腦獲勝/n");
+		printf("電腦獲勝\n");
+		opmoney = opmoney + tablemoney;
 		return;
 	}
 	if (con == 2)
 	{
-		printf("平手/n");
+		gold = gold + (tablemoney/2);
+		opmoney = opmoney + (tablemoney/2);
+		printf("平手\n");
 		return;
 	}
 	printf("\n\n\n\n");
 	//==================================================================第四回合結束
 }
-
-
-
-
-
 void show(int i, int f, card* const wDeck)
 {
 	for (int j = i; j <= f; j++)
@@ -124,15 +122,9 @@ void show(int i, int f, card* const wDeck)
 	}
 	printf("\n");
 }
-
-
-
-
-
-
 int init_Bet()
 {
-	int i =0 ;
+	int i = 0;
 	char select[10] = "";
 	int amount = 0, Basic, react;
 	srand(time(NULL));
@@ -141,110 +133,105 @@ int init_Bet()
 	//printf("對面玩家下賭注%d", Basic);
 	printf("\n是否棄牌?(y/n)\n");
 	scanf_s("%s", select, sizeof(char) * 4);
-	if(!strcmp(select, "n"))
+	if (!strcmp(select, "n"))
 	{
 		printf("電腦現在有:%d元\n", opmoney);
 		printf("現在我有:%d元\n", gold);
 		printf("請下賭注\n");
 		scanf_s("%d", &Basic);
-		while (Basic  > gold)
+		while (Basic > gold)
 		{
 			printf("你沒有錢窮鬼\n請重新下注:");
 			scanf_s("%d", &Basic);
 		}
-			if (react == 0)
+		if (react == 0)
+		{
+			printf("對手不想跟你玩\n");
+			printf("return the game");
+			return -1;
+		}
+		else
+		{
+			printf("對手跟注\n");
+			tablemoney = tablemoney + Basic * 2;
+			gold = gold - Basic;
+			opmoney = opmoney - Basic;
+			if (gold == 0)
 			{
-				printf("對手不想跟你玩\n");
-				printf("return the game");
+				printf("全下!!!!!!!!");
+				printf("檯面上的金額: 4000\n");
+				return 4;
+			}
+			if (gold < 0)
+			{
+				printf("破產了!!!!!!!!!");
 				return -1;
+			}
+			printf("電腦現在有:%d元\n", opmoney);
+			printf("您剩餘的籌碼:%d\n", gold);
+			printf("檯面上的金額;%d\n", tablemoney);
+			printf("\n是否加注?(y/n)\n");
+			scanf_s("%s", select, sizeof(char) * 4);
+			if (!strcmp(select, "y"))
+			{
+				printf("加注多少\n?");
+				scanf_s("%d", &amount);
+				while (amount > gold)
+				{
+					printf("你沒有錢窮鬼\n請重新下注:");
+					scanf_s("%d", &amount);
+				}
+				{
+					if (react == 0)
+					{
+						printf("對手棄牌\n");
+						gold = gold + amount + Basic * 2;
+						printf("電腦現在有:%d元\n", opmoney);
+						printf("您剩餘的籌碼:%d", gold);
+						printf("return the game");
+						return -1;
+					}
+					else
+					{
+						printf("對手跟注\n");
+						tablemoney = tablemoney + amount * 2;
+						gold = gold - amount;
+						opmoney = opmoney - amount;
+						printf("剩餘的籌碼:%d\n", gold);
+						printf("電腦現在有:%d元\n", opmoney);
+						printf("檯面上的金額;%d\n", tablemoney);
+
+						if (gold == 0)
+						{
+							printf("全下!!!!!!!!");
+							printf("檯面上的金額: 4000\n");
+
+							return 3;
+						}
+						if (gold < 0)
+						{
+							printf("破產了!!!!!!!!!");
+							return -1;
+						}
+					}
+				}
 			}
 			else
 			{
-				printf("對手跟注\n");
-				tablemoney = tablemoney + Basic * 2;
-				gold = gold - Basic;
-				opmoney = opmoney - Basic;
-				if (gold == 0)
-				{
-					printf("全下!!!!!!!!");
-					printf("檯面上的金額: 4000\n");
-					return 4;
-				}
-				if (gold < 0)
-				{
-					printf("破產了!!!!!!!!!");
-					return -1;
-				}
-				printf("電腦現在有:%d元\n", opmoney);
-				printf("您剩餘的籌碼:%d\n", gold);
-				printf("檯面上的金額;%d\n", tablemoney);
-				printf("\n是否加注?(y/n)\n");
-				scanf_s("%s", select, sizeof(char) * 4);
-				if (!strcmp(select, "y"))
-				{
-					printf("加注多少\n?");
-					scanf_s("%d", &amount);
-					while (amount > gold)
-					{
-						printf("你沒有錢窮鬼\n請重新下注:");
-						scanf_s("%d", &amount);
-					}
-					{
-						if (react == 0)
-						{
-							printf("對手棄牌\n");
-							gold = gold + amount + Basic * 2;
-							printf("電腦現在有:%d元\n", opmoney);
-							printf("您剩餘的籌碼:%d", gold);
-							printf("return the game");
-							return -1;
-						}
-						else
-						{
-							printf("對手跟注\n");
-							tablemoney = tablemoney + amount * 2;
-							gold = gold - amount;
-							opmoney = opmoney - amount;
-							printf("剩餘的籌碼:%d\n", gold);
-							printf("電腦現在有:%d元\n", opmoney);
-							printf("檯面上的金額;%d\n", tablemoney);
-
-							if (gold == 0)
-							{
-								printf("全下!!!!!!!!");
-								printf("檯面上的金額: 4000\n");
-
-								return 3;
-							}
-							if (gold < 0)
-							{
-								printf("破產了!!!!!!!!!");
-								return -1;
-							}
-						}
-					}
-				}
-				else
-				{
-					return 3;
-				}
+				return 3;
 			}
 		}
+	}
 	else
 	{
 		return -1;
 	}
 }
-		  
-	 
-    
-
-
 int compare(card  *wDeck)
 {
-	int formpl = 0, numpl[20] = { 0 }, colorpl[5] = { 0 }, pornpl = 0, sumpl = 0, onepairpl, twopairpl;
-	int formco = 0, numco[20] = { 0 }, colorco[5] = { 0 }, pornco = 0, sumco = 0, onepairco, twopairco;
-	int j;
+	int formpl = 0, numpl[20] = { 0 }, colorpl[5] = { 0 }, pornplFH = 0, pornplOP = 0, sumpl = 0, onepairpl, twopairpl, SFnumpl[20] = { 0 };
+	int formco = 0, numco[20] = { 0 }, colorco[5] = { 0 }, porncoFH = 0, porncoOP = 0, sumco = 0, onepairco, twopairco, SFnumco[20] = { 0 };
+	int j, hole, juice, huge, dick, ass;
 	//===========================================================================玩家
 	for (int i = 0; i < 7; i++)
 	{
@@ -323,16 +310,16 @@ int compare(card  *wDeck)
 		if (numpl[i] == 2)
 		{
 			formpl = 1;//一對
-			pornpl++;
+			pornplOP++;
 		}
-		if (pornpl >= 2)
+		if (pornplOP >= 2)
 		{
 			formpl = 2;//兩對
 		}
 		if (numpl[i] == 3)
 		{
 			formpl = 3;//三條
-			pornpl++;
+			pornplFH++;
 		}
 		if ((numpl[i] >= 1 && numpl[i + 1] >= 1 && numpl[i + 2] >= 1 && numpl[i + 3] >= 1 && numpl[i + 4] >= 1) || (numpl[10] >= 1 && numpl[11] >= 1 && numpl[12] >= 1 && numpl[13] >= 1 && numpl[1] >= 1))
 		{
@@ -348,7 +335,7 @@ int compare(card  *wDeck)
 	}
 	for (int i = 1; i <= 13; i++)
 	{
-		if (pornpl >= 2)
+		if (pornplOP >= 1 && pornplFH >= 1)
 		{
 			formpl = 6;//葫蘆
 		}
@@ -356,13 +343,85 @@ int compare(card  *wDeck)
 		{
 			formpl = 7;//鐵支
 		}
-		if ((numpl[i] >= 1 && numpl[i + 1] >= 1 && numpl[i + 2] >= 1 && numpl[i + 3] >= 1 && numpl[i + 4] >= 1) || (numpl[10] >= 1 && numpl[11] >= 1 && numpl[12] >= 1 && numpl[13] >= 1 && numpl[1] >= 1))
+	}
+	printf("玩家 ");
+	if (formpl == 1)
+	{
+		printf("一對\n");
+	}
+	if (formpl == 2)
+	{
+		printf("二對\n");
+	}
+	if (formpl == 3)
+	{
+		printf("三條\n");
+	}
+	if (formpl == 4)
+	{
+		printf("順子\n");
+	}
+	if (formpl == 5)
+	{
+		printf("同花\n");
+	}
+	if (formpl == 6)
+	{
+		printf("葫蘆\n");
+	}
+	if (formpl == 7)
+	{
+		printf("鐵支\n");
+	}
+	if (formpl == 8)
+	{
+		printf("同花順\n");
+	}
+	for (int i = 1; i < 20; i++)
+	{
+		SFnumpl[i] = numpl[i];
+	}
+	for (int i = 0; i <= 6; i++)
+	{
+		if (colorpl[1] >= 5)
 		{
-			if ((!strcmp(wDeck[i].suit, wDeck[i + 1].suit)) && (!strcmp(wDeck[i].suit, wDeck[i + 2].suit)) && (!strcmp(wDeck[i].suit, wDeck[i + 3].suit)) && (!strcmp(wDeck[i].suit, wDeck[i + 4].suit)))
+			if (strcmp(wDeck[i].suit, "黑桃"))
 			{
-				formpl = 8; //同花順
+				SFnumpl[*wDeck[i].face] --;
 			}
 		}
+		if (colorpl[2] >= 5)
+		{
+			if (strcmp(wDeck[i].suit, "紅心"))
+			{
+				SFnumpl[*wDeck[i].face] --;
+			}
+		}
+		if (colorpl[3] >= 5)
+		{
+			if (strcmp(wDeck[i].suit, "方塊"))
+			{
+				SFnumpl[*wDeck[i].face] --;
+			}
+		}
+		if (colorpl[4] >= 5)
+		{
+			if (strcmp(wDeck[i].suit, "梅花"))
+			{
+				SFnumpl[*wDeck[i].face] --;
+			}
+		}
+	}
+	for (int i = 1; i <= 9; i++)
+	{
+		if (SFnumpl[i] >= 1 && SFnumpl[i + 1] >= 1 && SFnumpl[i + 2] >= 1 && SFnumpl[i + 3] >= 1 && SFnumpl[i + 4] >= 1)
+		{
+			formpl = 8;//同花順
+		}
+	}
+	if (SFnumpl[1] >= 1 && SFnumpl[10] >= 1 && SFnumpl[11] >= 1 && SFnumpl[12] >= 1 && SFnumpl[13] >= 1)
+	{
+		formpl = 9;//同花大順
 	}
 	//===========================================================================電腦
 	for (int i = 2; i < 9; i++)
@@ -442,16 +501,16 @@ int compare(card  *wDeck)
 		if (numco[i] == 2)
 		{
 			formco = 1;//一對
-			pornco++;
+			porncoOP++;
 		}
-		if (pornco >= 2)
+		if (porncoOP >= 2)
 		{
 			formco = 2;//兩對
 		}
 		if (numco[i] == 3)
 		{
 			formco = 3;//三條
-			pornco++;
+			porncoFH++;
 		}
 		if (numco[i] >= 1 && numco[i + 1] >= 1 && numco[i + 2] >= 1 && numco[i + 3] >= 1 && numco[i + 4] >= 1 || numco[10] >= 1 && numco[11] >= 1 && numco[12] >= 1 && numco[13] >= 1 && numco[1] >= 1)
 		{
@@ -467,7 +526,7 @@ int compare(card  *wDeck)
 	}
 	for (int i = 1; i <= 13; i++)
 	{
-		if (pornco >= 2)
+		if (porncoOP >= 1 && porncoFH >= 1)
 		{
 			formco = 6;//葫蘆
 		}
@@ -476,7 +535,85 @@ int compare(card  *wDeck)
 			formco = 7;//鐵支
 		}
 	}
-
+	printf("電腦 ");
+	if (formco == 1)
+	{
+		printf("一對\n");
+	}
+	if (formco == 2)
+	{
+		printf("二對\n");
+	}
+	if (formco == 3)
+	{
+		printf("三條\n");
+	}
+	if (formco == 4)
+	{
+		printf("順子\n");
+	}
+	if (formco == 5)
+	{
+		printf("同花\n");
+	}
+	if (formco == 6)
+	{
+		printf("葫蘆\n");
+	}
+	if (formco == 7)
+	{
+		printf("鐵支\n");
+	}
+	if (formco == 8)
+	{
+		printf("同花順\n");
+	}
+	for (int i = 1; i < 20; i++)
+	{
+		SFnumco[i] = numco[i];
+	}
+	for (int i = 2; i <= 8; i++)
+	{
+		if (colorco[1] >= 5)
+		{
+			if (strcmp(wDeck[i].suit, "黑桃"))
+			{
+				SFnumco[*wDeck[i].face] --;
+			}
+		}
+		if (colorco[2] >= 5)
+		{
+			if (strcmp(wDeck[i].suit, "紅心"))
+			{
+				SFnumco[*wDeck[i].face] --;
+			}
+		}
+		if (colorco[3] >= 5)
+		{
+			if (strcmp(wDeck[i].suit, "方塊"))
+			{
+				SFnumco[*wDeck[i].face] --;
+			}
+		}
+		if (colorco[4] >= 5)
+		{
+			if (strcmp(wDeck[i].suit, "梅花"))
+			{
+				SFnumco[*wDeck[i].face] --;
+			}
+		}
+	}
+	for (int i = 1; i <= 9; i++)
+	{
+		if (SFnumco[i] >= 1 && SFnumco[i + 1] >= 1 && SFnumco[i + 2] >= 1 && SFnumco[i + 3] >= 1 && SFnumco[i + 4] >= 1)
+		{
+			formco = 8;//同花順
+		}
+	}
+	if (SFnumco[1] >= 1 && SFnumco[10] >= 1 && SFnumco[11] >= 1 && SFnumco[12] >= 1 && SFnumco[13] >= 1)
+	{
+		formpl = 9;//同花大順
+	}
 
 	//=========================================================================排型比較
 	//return 1 玩家贏  
@@ -661,9 +798,7 @@ int compare(card  *wDeck)
 					}
 				}
 			}
-
 		}
-
 	}
 	//=================================如果都是三條
 	if (formco == 3 && formpl == 3)
@@ -712,7 +847,6 @@ int compare(card  *wDeck)
 			}
 
 		}
-
 		else
 		{
 
@@ -989,7 +1123,7 @@ int compare(card  *wDeck)
 		}
 	}
 	//=================================如果都是鐵支
-	if ((formco == 7) && (formpl == 7))
+	if (formco == 7 && formpl == 7)
 	{
 		if (numco[1] == 4 && numpl[1] < numco[1])
 		{
@@ -1062,6 +1196,30 @@ int compare(card  *wDeck)
 		}
 
 	}
+	//=================================如果都是同花順
+	if (formco == 8 && formpl == 8)
+	{
+		for (int i = 13; i >= 5; i++)
+		{
+			if (SFnumco[i] > SFnumpl[i] && SFnumco[i] >= 1 && SFnumco[i - 1] >= 1 && SFnumco[i - 2] >= 1 && SFnumco[i - 3] >= 1 && SFnumco[i - 4] >= 1)
+			{
+				goto cw;
+			}
+			else if (SFnumco[i] < SFnumpl[i] && SFnumpl[i] >= 1 && SFnumpl[i - 1] >= 1 && SFnumpl[i - 2] >= 1 && SFnumpl[i - 3] >= 1 && SFnumpl[i - 4] >= 1)
+			{
+				goto pw;
+			}
+			else if (SFnumco[i] >= 1 && SFnumco[i - 1] >= 1 && SFnumco[i - 2] >= 1 && SFnumco[i - 3] >= 1 && SFnumco[i - 4] >= 1 && SFnumpl[i] >= 1 && SFnumpl[i - 1] >= 1 && SFnumpl[i - 2] >= 1 && SFnumpl[i - 3] >= 1 && SFnumpl[i - 4] >= 1)
+			{
+				goto sh;
+			}
+		}
+	}
+	//=================================如果都是同花大順
+	if (formco == 9 && formpl == 9)
+	{
+		goto sh;
+	}
 cw:
 	return 0;
 pw:
@@ -1069,10 +1227,7 @@ pw:
 sh:
 	return 2;
 }
-
-
-
-
+/* place strings into Card structures */
 void shuffle(card* const wDeck)
 {
 	int j;
@@ -1085,9 +1240,6 @@ void shuffle(card* const wDeck)
 		wDeck[j] = temp;
 	}
 }
-
-
-
 void fillDeck(card  *wDeck, const char* wFace[], const char* wSuit[])
 {
 	int i;
